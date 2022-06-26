@@ -10,13 +10,6 @@ The application is a Seat Booking application which allows a user to input a int
 When the application is first run, the application will present a menu to the user. You can navigate the menu using the Up Arrow and Down Arrow keys. To enter a menu option 
 press Enter.
 
-The application consists of the following structure:
-
-* CinemaSeatingBooking
-	* Contains the seat booking application files
-* CinemaSeatingBookingTests
-	* Contains the tests for the seat booking application
-
 The application features are:
 * Select the booking type - currently only have an option for 'Seat'
 * Select the number of rows and seats per row
@@ -24,6 +17,13 @@ The application features are:
 * Application will loop through previous step until no more seats are available - All seats booked
 
 The application contains functionality to confirm seat availability and simple input validation.
+
+The application consists of the following structure:
+
+* CinemaSeatingBooking
+	* Contains the seat booking application files
+* CinemaSeatingBookingTests
+	* Contains the tests for the seat booking application
 
 ### Pre-Requisites
 - C# / .NET 6
