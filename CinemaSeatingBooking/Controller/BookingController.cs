@@ -20,6 +20,9 @@ namespace CinemaSeatingBooking.Controller
             Seats = FloorPlanner!.GenerateSeatLayout(typeToBook);
             SendItemsToDisplay<string>($"\n\rStarting Available {typeToBook}:", Seats);
         }
+        public bool BookingsAvailable() => Booking!.BookingsAvailable(Seats!);
+
+        public bool AreEnoughSeatsAvailable(int numberofseats) => Booking!.AreSeatsAvailable(numberofseats, Seats!);
 
         public bool BookSeats(int numberofseats)
         {

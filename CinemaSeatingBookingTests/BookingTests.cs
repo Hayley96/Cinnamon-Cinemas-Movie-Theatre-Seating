@@ -42,5 +42,35 @@ namespace CinemaSeatingBookingTests
             Assert.That(booking.BookedSeats[0].Name, Is.EqualTo("A1"));
             Assert.That(booking.BookedSeats[1].Name, Is.EqualTo("A2"));
         }
+
+        [Test]
+        public void AreEnoughSeatsAvailable_Should_Return_True_If_The_Number_Of_Seats_Available_Is_Greater_Than_The_Input_Number()
+        {
+
+            Assert.That(booking.AreSeatsAvailable(2, bookingController.Seats!));
+        }
+
+        [Test]
+        public void AreEnoughSeatsAvailable_Should_Return_False_If_The_Number_Of_Seats_Available_Is_Less_Than_The_Input_Number()
+        {
+            Assert.That(booking.AreSeatsAvailable(16, bookingController.Seats!), Is.False);
+        }
+
+        [Test]
+        public void BookingsAvailable_Should_Return_True_If_Available_Seat_Count_Greater_Than_Zero()
+        {
+            Assert.That(booking!.BookingsAvailable(bookingController.Seats!));
+        }
+
+        [Test]
+        public void BookingsAvailable_Should_Return_False_If_Available_Seat_Count_Equals_Zero()
+        {
+            int numberofseats = 15;
+            for (int i = 0; i < numberofseats; i++)
+            {
+                booking.BookSeats(bookingController.Seats!, i);
+            }
+            Assert.That(booking!.BookingsAvailable(bookingController.Seats!), Is.False);
+        }
     }
 }

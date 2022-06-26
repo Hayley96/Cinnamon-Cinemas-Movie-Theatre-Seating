@@ -11,5 +11,11 @@
             BookedSeats.Add(Seats[index]);
             return Seats;
         }
+
+        public bool BookingsAvailable(List<IBookingType> Seats) =>
+            Seats.Where(seat => seat.StatusColor == ConsoleColor.Green).Count() != 0;
+
+        public bool AreSeatsAvailable(int numberofseats, List<IBookingType> Seats) =>
+            Seats.Where(seat => seat.StatusColor == ConsoleColor.Green).Count() >= numberofseats;
     }
 }
