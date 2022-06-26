@@ -7,6 +7,9 @@ The application is a Seat Booking application which allows a user to input a int
 
 ##Description
 
+When the application is first run, the application will present a menu to the user. You can navigate the menu using the Up Arrow and Down Arrow keys. To enter a menu option 
+press Enter.
+
 The application consists of the following structure:
 
 * CinemaSeatingBooking
