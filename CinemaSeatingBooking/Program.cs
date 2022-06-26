@@ -6,5 +6,5 @@ FloorPlanner floorPlanner = new();
 Booking booking = new();
 BookingController bookingController = new(floorPlanner, booking);
 bookingController.GetFloorPlan("Seat");
-while (booking.BookSeats(bookingController.Seats!, rnd.Next(1,4)));
+while (bookingController.BookSeats(rnd.Next(1,4)));
 bookingController.GenerateResultsForDisplay();

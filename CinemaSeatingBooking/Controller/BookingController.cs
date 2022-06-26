@@ -5,7 +5,7 @@ namespace CinemaSeatingBooking.Controller
 {
     public class BookingController
     {
-        public Booking? SeatBooking { get; private set; }
+        public Booking? Booking { get; private set; }
         public FloorPlanner? FloorPlanner { get; private set; }
         public List<IBookingType>? Seats { get; private set; }
         public List<int> RandomInputs { get; private set; } = new();
@@ -13,7 +13,7 @@ namespace CinemaSeatingBooking.Controller
         public BookingController(FloorPlanner floorplanner, Booking seatBooking)
         {
             FloorPlanner = floorplanner;
-            SeatBooking = seatBooking;
+            Booking = seatBooking;
         }
         public void GetFloorPlan(string typeToBook)
         {
@@ -21,12 +21,26 @@ namespace CinemaSeatingBooking.Controller
             SendItemsToDisplay<string>($"\n\rStarting Available {typeToBook}:", Seats);
         }
 
+        public bool BookSeats(int numberofseats)
+        {
+            if (numberofseats > Seats!.Where(seat => seat.StatusColor.Equals(ConsoleColor.Green)).Count())
+                return false;
+            for (int i = 0; i < numberofseats; i++)
+            {
+                Booking!.BookSeats(Seats!, i);
+                FloorPlanner!.UpdateSeatLayout(Seats!, Booking.BookedSeats);
+            }
+            GenerateResultsForDisplay();
+            return true;
+        }
+
         public void GenerateResultsForDisplay()
         {
-            Console.Write("");
-            Console.WriteLine("\n");
+            //Console.Write("");
+            //Console.WriteLine("\n");
             SendItemsToDisplay<string>("\rCurrent Seat Availability:", Seats!);
-            SendItemsToDisplay<string>("\rBooked BookingType:", SeatBooking!.BookedSeats);
+            SendItemsToDisplay<string>("\rBooked:", Booking!.BookedSeats);
+            Helpers.ClearConsoleLinesAbove(3);
         }
 
 

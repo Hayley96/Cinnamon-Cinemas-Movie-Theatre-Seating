@@ -23,22 +23,24 @@ namespace CinemaSeatingBookingTests
         [Test]
         public void BookedSeats_List_Should_Contain_Seat_A1_When_1_Seat_Booked()
         {
-            int seatsToBook = 1;
-            string expectedResult = "A1";
-            booking.BookSeats(bookingController.Seats!, seatsToBook);
-            Assert.That(booking.BookedSeats[0].Name, Is.EqualTo(expectedResult));
-
+            int numberofseats = 1;
+            for (int i = 0; i < numberofseats; i++)
+            {
+                booking.BookSeats(bookingController.Seats!, i);
+            }
+            Assert.That(booking.BookedSeats[0].Name, Is.EqualTo("A1"));
         }
 
         [Test]
         public void BookedSeats_List_Should_Contain_Seats_A1_And_A2_When_2_Seats_Booked()
         {
-            int seatsToBook = 2;
-            string expectedResult1 = "A1";
-            string expectedResult2 = "A2";
-            booking.BookSeats(bookingController.Seats!, seatsToBook);
-            Assert.That(booking.BookedSeats[0].Name, Is.EqualTo(expectedResult1));
-            Assert.That(booking.BookedSeats[1].Name, Is.EqualTo(expectedResult2));
+            int numberofseats = 2;
+            for (int i = 0; i < numberofseats; i++)
+            {
+                booking.BookSeats(bookingController.Seats!, i);
+            }
+            Assert.That(booking.BookedSeats[0].Name, Is.EqualTo("A1"));
+            Assert.That(booking.BookedSeats[1].Name, Is.EqualTo("A2"));
         }
     }
 }
