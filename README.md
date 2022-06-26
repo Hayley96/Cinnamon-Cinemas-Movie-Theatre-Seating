@@ -1,4 +1,4 @@
-# Cinnamon-Cinemas-Movie-Theatre-Seating
+# :movie_camera: Cinnamon-Cinemas-Movie-Theatre-Seating
 
 ## Introduction
 The application is a Seat Booking application which allows a user to input a integer and returns corresponding booked seats.
