@@ -4,12 +4,12 @@
     {
         public List<IBookingType>? BookingType { get; private set; } = new();
         private IBookingType? _bookingType;
-        public List<IBookingType> GenerateSeatLayout(string typeToBook)
+        public List<IBookingType> GenerateSeatLayout(int rows, int seatsPerRow, string typeToBook)
         {
             char seatRow = 'A';
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= rows; i++)
             {
-                for (int j = 1; j <= 5; j++)
+                for (int j = 1; j <= seatsPerRow; j++)
                 {
                     BookingTypesFactory.BookingTypesDict[typeToBook]();
                     _bookingType = BookingTypesFactory.bookingType;

@@ -15,7 +15,7 @@ namespace CinemaSeatingBookingTests
             _booking = new();
             _floorplanner = new();
             _bookingController = new(_floorplanner, _booking);
-            _bookingController.GetFloorPlan("Seat");
+            _bookingController.GetFloorPlan(3, 5, "Seat");
         }
 
         [Test]

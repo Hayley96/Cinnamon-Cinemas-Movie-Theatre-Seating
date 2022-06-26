@@ -15,37 +15,34 @@ namespace CinemaSeatingBooking.Controller
             FloorPlanner = floorplanner;
             Booking = seatBooking;
         }
-        public void GetFloorPlan(string typeToBook)
+        public void GetFloorPlan(int rows, int seatsPerRow, string typeToBook)
         {
-            Seats = FloorPlanner!.GenerateSeatLayout(typeToBook);
+            Seats = FloorPlanner!.GenerateSeatLayout(rows, seatsPerRow, typeToBook);
             SendItemsToDisplay<string>($"\n\rStarting Available {typeToBook}:", Seats);
         }
+
         public bool BookingsAvailable() => Booking!.BookingsAvailable(Seats!);
 
         public bool AreEnoughSeatsAvailable(int numberofseats) => Booking!.AreSeatsAvailable(numberofseats, Seats!);
 
-        public bool BookSeats(int numberofseats)
+        public void BookSeats(int numberofseats)
         {
-            if (numberofseats > Seats!.Where(seat => seat.StatusColor.Equals(ConsoleColor.Green)).Count())
-                return false;
             for (int i = 0; i < numberofseats; i++)
             {
                 Booking!.BookSeats(Seats!, i);
                 FloorPlanner!.UpdateSeatLayout(Seats!, Booking.BookedSeats);
             }
             GenerateResultsForDisplay();
-            return true;
         }
 
         public void GenerateResultsForDisplay()
         {
-            //Console.Write("");
-            //Console.WriteLine("\n");
+            Console.Write("");
+            Console.WriteLine("\n");
             SendItemsToDisplay<string>("\rCurrent Seat Availability:", Seats!);
             SendItemsToDisplay<string>("\rBooked:", Booking!.BookedSeats);
-            Helpers.ClearConsoleLinesAbove(3);
+            Helpers.ClearConsoleLinesAbove(6);
         }
-
 
         private void SendItemsToDisplay<T1>(T1 DisplayText, List<IBookingType> list)
         {
