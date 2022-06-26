@@ -3,6 +3,10 @@
 ## Introduction
 The application is a Seat Booking application which allows a user to input a integer and returns corresponding booked seats.
 
+![grab-landing-page](https://github.com/Hayley96/Cinnamon-Cinemas-Movie-Theatre-Seating/blob/main/GIF/CinnamonCinemaSeatingBooking.gif)
+
+##Description
+
 The application consists of the following structure:
 
 * CinemaSeatingBooking
