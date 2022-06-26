@@ -38,7 +38,17 @@
                 }
                 return true;
             }
+            DisplaySeats("\rRemaining Seats:", Seats);
+            DisplaySeats("\rBooked Seats:", BookedSeats);
+            DisplaySeats<string, int>("\rRandom Inputs:", RandomInputs);
             return false;
+        }
+
+        private void DisplaySeats<T1, T2>(T1 DisplayText, List<T2> list)
+        {
+            Console.Write($"\r{DisplayText} ");
+            list.ForEach(x => Console.Write($"{x} "));
+            Console.WriteLine("\n");
         }
     }
 }
